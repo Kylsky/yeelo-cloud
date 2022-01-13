@@ -1,0 +1,26 @@
+server:
+  servlet:
+    context-path: /gateway
+spring:
+  profiles:
+    active: dev
+  application:
+    name: yeelo-gateway
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: ${spring.application.name}
+#        注释则使用默认的namespcace
+        namespace: 176983f6-aca9-4514-ad71-0a7b1433a938
+
+#启用监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+      base-path: /gateway/actuator
